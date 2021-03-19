@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title center>Order Directory</title>
+</head>
+
+
+<body>
+<div class="container">
+    <h3>Order Directory</h3>
+    <hr>
+
+    <a th:href="@{/orders/showFormForAdd}"
+       class="btn btn-primary btn-sm mb-3">
+        Add Order </a>
+
+    <div th:each="tempOrder : ${orders}">
+        <div th:text="${tempOrder.getId()}"></div>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>price</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="orderItem : ${tempOrder.getOrderItems()}">
+                <td th:text="${orderItem.getItems()}"/>
+                <td th:text="${orderItem.getQuantity()}"/>
+                <td th:text="${orderItem.getPrice()}"/>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>
+

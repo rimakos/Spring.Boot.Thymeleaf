@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+          crossorigin="anonymous">
+
+    <title>
+        Save Order
+    </title>
+</head>
+
+<body>
+<div class="container">
+
+    <h3>Order Directory</h3>
+    <hr>
+    <p class="h4 mb-4">Save Order</p>
+    <form th:action="@{/orders/save}" th:object="${orderItem}" method="POST">
+
+
+        <input type="text" th:field="*{items}"
+               class="form-control mb=4 col-4" placeholder="Items">
+        <input type="text" th:field="*{quantity}"
+               class="form-control mb=4 col-4" placeholder="Quantity">
+        <input type="text" th:field="*{price}"
+               class="form-control mb=4 col-4" placeholder="price">
+        <button type="submit" class="btn-info col-2">Save</button>
+
+    </form>
+    <hr>
+    <a th:href="@{/orders/list}">Back to List</a>
+
+</div>
+
+</body>
+
+</html>
